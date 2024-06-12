@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct UpcomingView: View {
+    @Binding var movies: [Movie]
     var body: some View {
         VStack(alignment: .leading){
             UpcomingHeadlineView()
-            MovieListView()
+            MovieListView(movies: $movies)
         }
         .background(Color(UIColor.systemGray6))
     }
-}
-
-#Preview {
-    UpcomingView()
 }

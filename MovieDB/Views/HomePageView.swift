@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct HomePageView: View {
+    @StateObject private var viewModel = MovieViewModel()
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 12) {
-                TrendingView()
-                NowPlayingView() 
-                UpcomingView()
-                TopRatedView()
+            VStack(alignment: .leading, spacing: 40) {
+                TrendingView(movies: $viewModel.popularMovies)
+                NowPlayingView(movies: $viewModel.nowPlayingMovies)
+                UpcomingView(movies: $viewModel.upcomingMovies )
+                TopRatedView(movies: $viewModel.topRatedMovies)
             }
+        }
+        .onAppear {
+            viewModel.fetchMovies()
         }
     }
 }
 
-#Preview {
-    HomePageView()
-}

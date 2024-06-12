@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrendingHeadlineView: View {
-    @State private var selectedTimeFrame: TimeFrame = .today
+    @Binding var selectedTimeFrame: TimeFrame
     
     var body: some View {
         HStack {
@@ -21,6 +21,7 @@ struct TrendingHeadlineView: View {
             HStack(spacing: 0) {
                 Button(action: {
                     selectedTimeFrame = .today
+                    print(selectedTimeFrame)
                 }) {
                     Text(TimeFrame.today.rawValue)
                         .padding(.vertical, 8)
@@ -32,6 +33,7 @@ struct TrendingHeadlineView: View {
                 
                 Button(action: {
                     selectedTimeFrame = .thisWeek
+                    print(selectedTimeFrame)
                 }) {
                     Text(TimeFrame.thisWeek.rawValue)
                         .padding(.vertical, 6)
@@ -70,7 +72,3 @@ enum TimeFrame: String {
     case thisWeek = "This week"
 }
 
-
-#Preview {
-    TrendingHeadlineView()
-}

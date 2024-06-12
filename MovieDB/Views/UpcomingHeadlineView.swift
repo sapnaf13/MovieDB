@@ -26,15 +26,10 @@ struct UpcomingHeadlineView: View {
                     .foregroundColor(.white)
                     .cornerRadius(14)
             }
-            //.padding(.trailing, 16)
+            .padding(.trailing, 16)
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 16)
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
-    }
-
-
-#Preview {
-    UpcomingHeadlineView()
 }

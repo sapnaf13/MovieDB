@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct NowPlayingView: View {
+    @Binding var movies: [Movie]
     var body: some View {
         VStack(alignment: .leading){
             NowPlayingHeadlineView()
-            MovieListView()
+            MovieListView(movies: $movies)
         }
         .background(Color(UIColor.systemGray6))
     }
 }
 
-#Preview {
-    NowPlayingView()
-}

@@ -32,9 +32,5 @@ struct TopRatedHeadlineView: View {
         .padding(.horizontal, 16)
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
-    }
-
-
-#Preview {
-    TopRatedHeadlineView()
 }
+

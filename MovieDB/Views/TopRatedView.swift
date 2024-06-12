@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct TopRatedView: View {
+    @Binding var movies: [Movie]
     var body: some View {
         VStack(alignment: .leading){
             TopRatedHeadlineView()
-            MovieListView()
+            MovieListView(movies: $movies)
         }
         .background(Color(UIColor.systemGray6))
     }
 }
 
-#Preview {
-    TopRatedView()
-}

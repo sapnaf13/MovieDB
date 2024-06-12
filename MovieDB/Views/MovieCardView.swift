@@ -8,23 +8,28 @@
 import SwiftUI
 
 struct MovieCardView: View {
+    let movie: Movie
     var body: some View {
         VStack(alignment: .leading) {
-            MoviePosterRatingView()
+            MoviePosterRatingView(movie: movie)
                 .padding(.bottom, 10)
             
-            Text("movie name")
-                .font(.headline)
-                .lineLimit(2)
+            Text("\(movie.title)")
+                .font(.subheadline)
+                .lineLimit(3)
                 .foregroundColor(.primary)
+                .fixedSize(horizontal: false, vertical: true)
             
-            Text("2024")
+            Text("\(movie.releaseYear)")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
+        .frame(width: cardWidth)
     }
 }
 
-#Preview {
-    MovieCardView()
+private extension MovieCardView {
+    var cardWidth: CGFloat {
+        UIScreen.main.bounds.width/3.2
+    }
 }

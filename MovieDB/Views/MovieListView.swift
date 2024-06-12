@@ -8,18 +8,15 @@
 import SwiftUI
 
 struct MovieListView: View {
+    @Binding var movies: [Movie]
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 12) {
-                ForEach(0 ..< 10) { card in
-                    MovieCardView()
+                ForEach(movies) { movie in
+                    MovieCardView(movie: movie)
                 }
             }
             .padding(3)
         }
     }
-}
-
-#Preview {
-    MovieListView()
 }

@@ -8,18 +8,27 @@
 import SwiftUI
 
 struct MoviePosterRatingView: View {
+    let movie: Movie
     var body: some View {
         
         ZStack(alignment: .bottomLeading) {
-            Rectangle()
-                .frame(width: imageWidth, height: imageHeight)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.white, lineWidth: 1)
-                )
             
-            RatingIndicatorView()
+            if let posterURL = movie.posterURL {
+                AsyncImage(url: posterURL ) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: imageWidth, height: imageHeight)
+                        .clipped()
+                } placeholder: {
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(width: imageWidth, height: imageHeight)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
+            
+            RatingIndicatorView(rating: movie.vote_average)
                 .frame(width: 50, height: 50)
                 .clipShape(Circle())
                 .padding(8)
@@ -38,8 +47,4 @@ private extension MoviePosterRatingView {
     var imageHeight: CGFloat {
         UIScreen.main.bounds.height/4
     }
-}
-
-#Preview {
-    MoviePosterRatingView()
 }

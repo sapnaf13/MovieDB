@@ -34,7 +34,3 @@ struct NowPlayingHeadlineView: View {
         
     }
 }
-
-#Preview {
-    NowPlayingHeadlineView()
-}

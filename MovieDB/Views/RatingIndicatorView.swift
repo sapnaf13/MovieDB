@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct RatingIndicatorView: View {
-    
-    @State private var rating: Double = 6.5
+    var rating: Double
     var body: some View {
         ZStack {
             Circle()
@@ -38,8 +37,4 @@ struct RatingIndicatorView: View {
             .padding(5)
         }
     }
-}
-
-#Preview {
-    RatingIndicatorView()
 }
